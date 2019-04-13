@@ -8,6 +8,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
@@ -65,13 +66,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        line.geodesic(true);
 //        mMap.addPolyline(line);
 
-        // 3地点を結ぶ半透明の三角形を描く(ポリゴン(多角形))
-        PolygonOptions triangle = new PolygonOptions();
-        triangle.add(tokyo);
-        triangle.add(seattle);
-        triangle.add(sydney);
-        triangle.strokeColor(Color.GREEN);
-        triangle.fillColor(Color.argb(64, 255, 0, 0));
-        mMap.addPolygon(triangle);
+//        // 3地点を結ぶ半透明の三角形を描く(ポリゴン(多角形))
+//        PolygonOptions triangle = new PolygonOptions();
+//        triangle.add(tokyo);
+//        triangle.add(seattle);
+//        triangle.add(sydney);
+//        triangle.strokeColor(Color.GREEN);
+//        triangle.fillColor(Color.argb(64, 255, 0, 0));
+//        mMap.addPolygon(triangle);
+
+        // 3地点を中心とする半透明の円を描く(3つの円が重なるように大きさを調整)
+        CircleOptions circleTokyo = new CircleOptions();
+        circleTokyo.center(tokyo);
+        circleTokyo.radius(5000000);
+        mMap.addCircle(circleTokyo);
     }
 }
