@@ -48,7 +48,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng seattle = new LatLng(47.590777, -122.332976);
         mMap.addMarker(new MarkerOptions().position(seattle).title("マリナーズ球場"));
 
-        // シドニーにカメラを移動
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(tokyo));
+        // カメラの位置とズームを設定
+        LatLng center = new LatLng(10.582792, -172.405480);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 2));
     }
 }
