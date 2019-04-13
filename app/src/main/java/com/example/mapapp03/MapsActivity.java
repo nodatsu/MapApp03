@@ -1,5 +1,6 @@
 package com.example.mapapp03;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -51,5 +53,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // カメラの位置とズームを設定
         LatLng center = new LatLng(10.582792, -172.405480);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 2));
+
+        // 線を描く
+        PolylineOptions line = new PolylineOptions();
+        line.add(tokyo);
+        line.add(seattle);
+        // 色、太さ、測地線
+        line.color(Color.RED);
+        line.width(30);
+        line.geodesic(true);
+        mMap.addPolyline(line);
     }
 }
